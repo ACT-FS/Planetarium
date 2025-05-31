@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planetario 3D</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src = "main.js" defer></script>
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="loading">
+        <div class="spinner"></div>
+        <div>Inicializando Planetario...</div>
+      </div>
+
+      <div id="controls">
+        <h3 class="glow">🌌 Controles del Planetario</h3>
+
+        <div class="control-group">
+          <label>Velocidad de Rotación:</label>
+          <input type="range" id="speed" min="0" max="5" step="0.1" value="1" />
+        </div>
+
+        <div class="control-group">
+          <label>Zoom:</label>
+          <input type="range" id="zoom" min="50" max="500" value="200" />
+        </div>
+
+        <div class="control-group">
+          <label>Seguir Planeta:</label>
+          <select id="follow">
+            <option value="">Vista Libre</option>
+            <option value="mercury">Mercurio</option>
+            <option value="venus">Venus</option>
+            <option value="earth">Tierra</option>
+            <option value="mars">Marte</option>
+            <option value="jupiter">Júpiter</option>
+            <option value="saturn">Saturno</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label>Tipo de Vista:</label>
+          <select id="viewType">
+            <option value="orbit">Vista Orbital</option>
+            <option value="close">Vista Cercana</option>
+            <option value="surface">Vista Superficie</option>
+            <option value="cinematic">Vista Cinemática</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label>Vistas Predefinidas:</label>
+          <div
+            style="display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px"
+          >
+            <button
+              onclick="setPresetView('overview')"
+              style="font-size: 0.8em; padding: 5px 10px"
+            >
+              🌌 General
+            </button>
+            <button
+              onclick="setPresetView('inner')"
+              style="font-size: 0.8em; padding: 5px 10px"
+            >
+              🌍 Interior
+            </button>
+            <button
+              onclick="setPresetView('outer')"
+              style="font-size: 0.8em; padding: 5px 10px"
+            >
+              🪐 Exterior
+            </button>
+            <button
+              onclick="setPresetView('sun')"
+              style="font-size: 0.8em; padding: 5px 10px"
+            >
+              ☀️ Sol
+            </button>
+          </div>
+        </div>
+
+        <button onclick="resetView()">🎯 Resetear Vista</button>
+        <button onclick="toggleOrbits()">🔄 Mostrar Órbitas</button>
+        <button onclick="toggleStars()">⭐ Estrellas</button>
+        <button onclick="toggleAudio()" id="audioBtn">🔊 Sonido</button>
+
+        <div class="control-group">
+          <label>Volumen:</label>
+          <input
+            type="range"
+            id="volume"
+            min="0"
+            max="1"
+            step="0.1"
+            value="0.3"
+          />
+        </div>
+      </div>
+
+      <div id="info-panel">
+        <h4 id="planet-name">Información del Planeta</h4>
+        <div id="planet-details"></div>
+      </div>
+    </div>
+  </body>
+</html>
